@@ -1,0 +1,18 @@
+.App {
+  height: 100%;
+}
+
+.App-main-page-content {
+  display: flex;
+  height: 100%;
+}
+
+.navbar,
+.suggestions {
+  width: 25%;
+}
+
+.home {
+  width: 50%;
+  border: 1px solid #4286f4;
+}
