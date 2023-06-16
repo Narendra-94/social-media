@@ -4,6 +4,10 @@
   border-bottom: 1px solid #4286f4;
   padding: 10px;
   background-color: transparent;
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .headerText {

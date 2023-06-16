@@ -36,10 +36,10 @@ export const LandingPage = () => {
             </ul>
             <div className="authentication">
               <button className="signup-btn">
-                <Link>Join Now</Link>
+                <Link to="/signup">Join Now</Link>
               </button>
               <div className="login-path">
-                <Link>Already have an account?</Link>
+                <Link to="/login">Already have an account?</Link>
               </div>
             </div>
           </div>
