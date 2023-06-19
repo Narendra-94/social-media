@@ -18,6 +18,38 @@ export const users = [
     avatar: "https://i.postimg.cc/K8jbCZRb/Gabbar-Singh.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    following: [
+      {
+        _id: uuid(),
+        firstName: "Niharika",
+        lastName: "Rakhewar",
+        username: "harleyquinn",
+        avatar: "https://i.postimg.cc/tCXKYbfs/Harley-Quinn.jpg",
+      },
+    ],
+    followers: [
+      {
+        _id: uuid(),
+        firstName: "Niharika",
+        lastName: "Rakhewar",
+        username: "harleyquinn",
+        avatar: "https://i.postimg.cc/tCXKYbfs/Harley-Quinn.jpg",
+      },
+      {
+        _id: uuid(),
+        firstName: "Yashaswi",
+        lastName: "Mishra",
+        username: "baburaoapte",
+        avatar: "https://i.postimg.cc/C1jNPNmB/Baburao.jpg",
+      },
+      {
+        _id: uuid(),
+        firstName: "Akshat",
+        lastName: "Mehta",
+        username: "joker",
+        avatar: "https://i.postimg.cc/QMjxKNw2/Joker.jpg",
+      },
+    ],
   },
   {
     _id: uuid(),

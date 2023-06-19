@@ -14,12 +14,13 @@
   display: flex;
   gap: 1rem;
   width: 100%;
-  height: 600px;
 }
 
 .post {
   padding: 2rem;
-  border-bottom: 1px solid #4286f4;
+  border-top: 1px solid #4286f4;
+  border-bottom: 0px solid #4286f4;
+  background: black;
 }
 
 .post p {
@@ -71,14 +72,16 @@
 }
 
 .content-photos {
-  width: 66.666667%;
-
+  /* width: 66.666667%; */
+  height: 400px;
   margin: 1.25rem auto;
 }
 
 .content-photos img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .content {
@@ -101,4 +104,17 @@
 .post-user-name-container {
   display: flex;
   gap: 1rem;
+}
+
+.user-content-container {
+  width: 100%;
+}
+
+.user-appreciation {
+  display: flex;
+  color: var(--movie-theme-main-color);
+  font-size: x-large;
+  justify-content: space-around;
+  margin-top: 2rem;
+  cursor: pointer;
 }

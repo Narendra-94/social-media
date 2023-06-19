@@ -13,7 +13,7 @@ export const Login = () => {
     password: "",
   });
 
-  const { setToken } = useContext(AuthContext);
+  const { setToken, profile, setProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLoginGuest = async () => {
@@ -32,6 +32,13 @@ export const Login = () => {
       localStorage.setItem("user", JSON.stringify(data.foundUser));
       navigate("/");
       setToken(data.encodedToken);
+      setProfile({
+        ...profile,
+        firstName: data.foundUser.firstName,
+        lastName: data.foundUser.lastName,
+        username: data.foundUser.username,
+        avatar: data.foundUser.avatar,
+      });
     }
   };
 

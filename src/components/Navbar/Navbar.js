@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Logo } from "../Logo";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Navbar = () => {
+  const { profile } = useContext(AuthContext);
   return (
     <aside className="navbar">
       <div className="navbar-container">
@@ -20,7 +22,17 @@ export const Navbar = () => {
         </div>
 
         <div className="navbar-profile">
-          <Link>Profile</Link>
+          <Link className="profile-link">
+            <div className="avatar-image">
+              <img src={profile.avatar} alt="User Avatar" className="avatar" />
+            </div>
+            <div className="post-user-name">
+              <p className="user-fullname">
+                {profile.firstName} {profile.lastName}
+              </p>
+              <p className="user-username">@{profile.username}</p>
+            </div>
+          </Link>
         </div>
       </div>
     </aside>

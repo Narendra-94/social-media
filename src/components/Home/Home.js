@@ -5,6 +5,10 @@ import { MediaContext } from "../../context/MediaContext";
 import "./home.css";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
+import { BiBookmark, BiComment, BiHeart } from "react-icons/bi";
+import { BsShare } from "react-icons/bs";
+import { FilterPosts } from "../FilterPosts/FilterPosts";
+import { CreatePosts } from "../CreatePosts/CreatePosts";
 
 export const Home = () => {
   const { state, dispatch } = useContext(MediaContext);
@@ -12,7 +16,9 @@ export const Home = () => {
   return (
     <div className="home">
       <PageHeader headerText="Home" />
-      {state.posts.posts.map((post) => {
+      <CreatePosts />
+      <FilterPosts />
+      {state.filteredPosts.map((post) => {
         const user = state?.users?.users.find(
           (user) => user.username === post.username
         );
@@ -28,7 +34,7 @@ export const Home = () => {
                     className="avatar"
                   />
                 </div>
-                <div className="user-content">
+                <div className="user-content-container">
                   <div className="user-content-header">
                     <div className="post-user-name-container">
                       <div className="post-user-name">
@@ -56,6 +62,12 @@ export const Home = () => {
                     <div className="content-photos">
                       <img src={post.photos} alt="" />
                     </div>
+                  </div>
+                  <div className="user-appreciation">
+                    <BiHeart />
+                    <BiComment />
+                    <BiBookmark />
+                    <BsShare />
                   </div>
                 </div>
               </div>

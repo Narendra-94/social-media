@@ -12,33 +12,50 @@ export const posts = [
     content:
       "I recently had the pleasure of watching Across the Spider-Verse Spider-Man, and I must say it is an absolute gem in the world of animated films. The breathtaking animation alone is worth the price of admission. The visuals are mind-blowing, with a vibrant and dynamic display that takes you on a journey through various dimensions. Every frame is a true work of art, pushing the boundaries of what animation can achieve.",
     likes: {
-      likeCount: 0,
+      likeCount: 2,
       likedBy: [],
       dislikedBy: [],
     },
     photos: "https://i.postimg.cc/g0sHFJ34/Spiderverse.jpg",
     username: "gabbarsingh",
-    createdAt: "2022-05-15T12:00:28+05:30",
+    createdAt: "2023-05-15T12:00:28+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
-    content: "Wohi Kahani Fir Ek Baar",
+    content: `Tara 
+Tara.
+Kaunsa Tara?
+Kis manzil ka?
+Kya chakkar hai?
+Kaha challa hai dil ka rastaa bin kadmo ke…
+Durr khadi sapno ki mallika,
+Hai thodi na yaar,
+Mirage hai !
+Jo desert mein dikhta hai.
+Hoti reyt hai, lagta paani.
+Uske liye main papad beloon?
+Do kodi ki hasti hai, par ussey khelu?
+Fekh bikheru apna sab kuch uski khaatir?
+Kisse chahiye mann ka sona, aankh ki moti, kisse padi hai
+Andar kya hai?
+Hoti ret hai,
+Lagta paani. 💖💖`,
     likes: {
-      likeCount: 2,
+      likeCount: 4,
       likedBy: [],
       dislikedBy: [],
     },
     photos: "https://i.postimg.cc/3RgYc6yH/Tamasha.webp",
     username: "baburaoapte",
-    createdAt: "2022-01-10T10:55:06+05:30",
+    createdAt: "2023-01-10T10:55:06+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
-    content: "Finally the new season is here!!",
+    content: "Finally the new season is here!! 🙌",
     likes: {
-      likeCount: 4,
+      likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },
@@ -49,9 +66,9 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "That's what she said",
+    content: "That's what she said!! 🤪 ",
     likes: {
-      likeCount: 3,
+      likeCount: 1,
       likedBy: [],
       dislikedBy: [],
     },
@@ -62,9 +79,10 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "Missing these kind of comedy movies",
+    content:
+      "Feeling a bit nostalgic and missing those good old comedy movies that never failed to make me laugh! 🤣 Can you all help me relive the joy by sharing your favorite comedy films? Let's bring back the laughter and create a list of timeless comedy gems! 🎬🍿 #MissingComedyMovies #MovieMemories #NeedALaugh",
     likes: {
-      likeCount: 7,
+      likeCount: 2,
       likedBy: [],
       dislikedBy: [],
     },
@@ -75,7 +93,8 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "Acting at it's best",
+    content:
+      "True masterpiece. Acting, writing and direction all are unbelievably great. Very gripping and emotional, the stage/theatre style is really well showcased. Loved the writing. I'm  awestruck by NANA PATEKAR's brilliant performance which comes naturally to him. 🙌",
     likes: {
       likeCount: 4,
       likedBy: [],
