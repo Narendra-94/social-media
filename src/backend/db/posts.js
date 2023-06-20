@@ -8,7 +8,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: uuid(),
+    _id: "01",
     content:
       "I recently had the pleasure of watching Across the Spider-Verse Spider-Man, and I must say it is an absolute gem in the world of animated films. The breathtaking animation alone is worth the price of admission. The visuals are mind-blowing, with a vibrant and dynamic display that takes you on a journey through various dimensions. Every frame is a true work of art, pushing the boundaries of what animation can achieve.",
     likes: {
@@ -22,7 +22,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "02",
     content: `Tara 
 Tara.
 Kaunsa Tara?
@@ -52,7 +52,7 @@ Lagta paani. 💖💖`,
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "03",
     content: "Finally the new season is here!! 🙌",
     likes: {
       likeCount: 3,
@@ -65,7 +65,7 @@ Lagta paani. 💖💖`,
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "04",
     content: "That's what she said!! 🤪 ",
     likes: {
       likeCount: 1,
@@ -78,7 +78,7 @@ Lagta paani. 💖💖`,
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "05",
     content:
       "Feeling a bit nostalgic and missing those good old comedy movies that never failed to make me laugh! 🤣 Can you all help me relive the joy by sharing your favorite comedy films? Let's bring back the laughter and create a list of timeless comedy gems! 🎬🍿 #MissingComedyMovies #MovieMemories #NeedALaugh",
     likes: {
@@ -92,7 +92,7 @@ Lagta paani. 💖💖`,
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "06",
     content:
       "True masterpiece. Acting, writing and direction all are unbelievably great. Very gripping and emotional, the stage/theatre style is really well showcased. Loved the writing. I'm  awestruck by NANA PATEKAR's brilliant performance which comes naturally to him. 🙌",
     likes: {

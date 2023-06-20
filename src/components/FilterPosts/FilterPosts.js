@@ -5,10 +5,10 @@ import { BsFire } from "react-icons/bs";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
 import { MediaContext } from "../../context/MediaContext";
 
-export const FilterPosts = () => {
+export const FilterPosts = ({ selectedFilter, setSelectedFilter }) => {
   const { dispatch } = useContext(MediaContext);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState("latest");
+  // const [selectedFilter, setSelectedFilter] = useState("latest");
   const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const FilterPosts = () => {
 
   const handleFilteredClick = (filter) => {
     setSelectedFilter(filter);
-    dispatch({ type: "ON_CLICKING_FILTERED_BUTTON", payload: filter });
+    // dispatch({ type: "ON_CLICKING_FILTERED_BUTTON", payload: filter });
     setShowFilterOptions(false);
   };
 

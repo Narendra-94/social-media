@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { SlOptionsVertical } from "react-icons/sl";
 import { PageHeader } from "../PageHeader/PageHeader";
 import { MediaContext } from "../../context/MediaContext";
@@ -9,22 +9,28 @@ import { BiBookmark, BiComment, BiHeart } from "react-icons/bi";
 import { BsShare } from "react-icons/bs";
 import { FilterPosts } from "../FilterPosts/FilterPosts";
 import { CreatePosts } from "../CreatePosts/CreatePosts";
+import { Likes } from "./Likes";
+import { getSortedPosts } from "../../utils";
 
 export const Home = () => {
   const { state, dispatch } = useContext(MediaContext);
-  console.log(state);
+  const [selectedFilter, setSelectedFilter] = useState("latest");
+  const sortedPosts = getSortedPosts(state.posts, selectedFilter);
   return (
     <div className="home">
       <PageHeader headerText="Home" />
       <CreatePosts />
-      <FilterPosts />
-      {state.filteredPosts.map((post) => {
-        const user = state?.users?.users.find(
+      <FilterPosts
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
+      />
+      {sortedPosts?.map((post) => {
+        const user = state?.users?.find(
           (user) => user.username === post.username
         );
 
         return (
-          <div key={post.id} className="post">
+          <div key={post._id} className="post">
             <div className="post-container">
               <div className="user-information">
                 <div className="avatar-image">
@@ -64,7 +70,10 @@ export const Home = () => {
                     </div>
                   </div>
                   <div className="user-appreciation">
-                    <BiHeart />
+                    <div>
+                      <Likes post={post} />
+                    </div>
+
                     <BiComment />
                     <BiBookmark />
                     <BsShare />

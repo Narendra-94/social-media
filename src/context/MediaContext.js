@@ -10,10 +10,10 @@ export const MediaProvider = ({ children }) => {
     const getData = async () => {
       const response = await fetch("/api/users");
       const data = await response.json();
-
+      console.log(data, "data");
       dispatch({
         type: "FETCH_SUCCESSFULL_USERS_DATA",
-        payload: data,
+        payload: data.users,
       });
     };
     getData();
@@ -23,10 +23,11 @@ export const MediaProvider = ({ children }) => {
     const getData = async () => {
       const response = await fetch("/api/posts");
       const data = await response.json();
+      console.log(data, "postsdta");
 
       dispatch({
         type: "FETCH_SUCCESSFULL_POSTS_DATA",
-        payload: data,
+        payload: data.posts,
       });
     };
     getData();
