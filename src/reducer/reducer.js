@@ -58,6 +58,17 @@ export const reducer = (state, action) => {
     case "SAVE_DATA_BY_DISLIKE": {
       return { ...state, posts: action.payload };
     }
+    case "SAVE_DATA_BY_BOOKMARK": {
+      return {
+        ...state,
+        users: state.users.map((data) =>
+          data.username === action.payload.username
+            ? { ...data, bookmarks: action.payload.bookmarks }
+            : data
+        ),
+      };
+    }
+
     default:
       return state;
   }

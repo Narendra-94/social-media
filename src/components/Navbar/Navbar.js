@@ -14,9 +14,9 @@ export const Navbar = () => {
             <Logo />
           </Link>
           <div className="navigation-content">
-            <Link>Home</Link>
-            <Link>Explore</Link>
-            <Link>Bookmark</Link>
+            <Link to="/">Home</Link>
+            <Link to="/explore">Explore</Link>
+            <Link to="/bookmarks">Bookmarks</Link>
             <Link>Logout</Link>
           </div>
         </div>

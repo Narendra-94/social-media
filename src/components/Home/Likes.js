@@ -1,21 +1,17 @@
 import React, { useContext } from "react";
 import { BiHeart } from "react-icons/bi";
+import { BsHeartFill } from "react-icons/bs";
 import "./home.css";
 import { MediaContext } from "../../context/MediaContext";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Likes = ({ post }) => {
-  const { state, dispatch } = useContext(MediaContext);
+  const { dispatch } = useContext(MediaContext);
   const { token, profile } = useContext(AuthContext);
-  console.log(post, "outside");
 
-  // const isLike = "002" === profile._id;
   const isLike =
     post.likes.likedBy.filter((users) => users._id === profile._id).length !==
     0;
-  // const isLike = post.likes.likedBy.map((users) => console.log(users));
-  console.log(isLike, "isLike");
-  console.log("abcd");
 
   const handlePostlike = async (post) => {
     const response = await fetch(`/api/posts/like/${post._id}`, {
@@ -42,20 +38,22 @@ export const Likes = ({ post }) => {
   };
 
   const likedPostByUser = (postUser) => {
-    console.log(isLike, "isLike");
-    console.log(profile, "profile");
-    console.log(post, "postinside");
     if (isLike) {
       handlePostDislike(postUser);
     } else handlePostlike(postUser);
   };
 
   return (
-    <>
-      <button className={"like-btn"} onClick={() => likedPostByUser(post)}>
-        {/* <BiHeart /> */}
-        {isLike ? "Unlike" : "Like"}
-      </button>
-    </>
+    <div className="likes-content">
+      {isLike ? (
+        <BsHeartFill
+          className="like-btn"
+          onClick={() => likedPostByUser(post)}
+        />
+      ) : (
+        <BiHeart onClick={() => likedPostByUser(post)} />
+      )}
+      <p>{post.likes.likeCount}</p>
+    </div>
   );
 };
