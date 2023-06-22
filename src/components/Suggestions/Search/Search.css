@@ -1,0 +1,9 @@
+.search-users-input {
+  margin: 10px;
+  width: 70%;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: var(--movie-theme-main-color);
+  font-weight: 600;
+}

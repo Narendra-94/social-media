@@ -1,9 +1,68 @@
-.search-users-input {
-  margin: 10px;
-  width: 70%;
-  border-radius: 20px;
-  padding: 10px 20px;
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+}
+
+.suggestions-card {
+  border-radius: 10px;
+  width: 80%;
   background-color: black;
+}
+
+.suggestions-card h3 {
+  margin-top: 10px;
+}
+
+.suggestions-card h3 {
   color: var(--movie-theme-main-color);
-  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.suggestions-container {
+  display: flex;
+  margin: 20px;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestions-data {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 10px;
+  align-items: center;
+}
+
+/* .suggestions-data button {
+ 
+  padding: 2px 20px;
+} */
+.name {
+  color: var(--movie-theme-main-color);
+  font-size: 1.5rem;
+  letter-spacing: 0.025em;
+  font-weight: 700;
+}
+
+.suggestions-card .follow-button {
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 20px;
+  background: linear-gradient(to right, #373b44, #4286f4);
+  border: none;
+  height: fit-content;
+  padding: 8px 20px;
+  color: var(--movie-theme-main-color);
+}
+
+.username {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e2e2e292;
 }
