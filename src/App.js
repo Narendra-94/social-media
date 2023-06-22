@@ -8,6 +8,7 @@ import { Home } from "./components/Home/Home";
 import { Bookmarks } from "./components/Bookmarks/Bookmarks";
 import { Explore } from "./components/Explore/Explore";
 import { MainContainer } from "./components/MainContainer/MainContainer";
+import { SinglePost } from "./components/SinglePost/SinglePost";
 
 function App() {
   return (
@@ -40,6 +41,22 @@ function App() {
             element={
               <MainContainer>
                 <Bookmarks />
+              </MainContainer>
+            }
+          />
+          <Route
+            path="/singlePost/:postId"
+            element={
+              <MainContainer>
+                <SinglePost />
+              </MainContainer>
+            }
+          />
+          <Route
+            path="/profile/:username"
+            element={
+              <MainContainer>
+                <SinglePost />
               </MainContainer>
             }
           />

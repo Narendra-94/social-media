@@ -1,19 +1,15 @@
 import React, { useContext, useState } from "react";
-import { SlOptionsVertical } from "react-icons/sl";
 import { PageHeader } from "../PageHeader/PageHeader";
 import { MediaContext } from "../../context/MediaContext";
 import "./home.css";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
-import { BiComment } from "react-icons/bi";
-import { BsShare } from "react-icons/bs";
 import { FilterPosts } from "../FilterPosts/FilterPosts";
 import { CreatePosts } from "../CreatePosts/CreatePosts";
-import { Likes } from "./Likes";
 import { getSortedPosts } from "../../utils";
-import { BookmarkBtn } from "./BookmarkBtn";
 import { Posts } from "../Posts";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const { state } = useContext(MediaContext);

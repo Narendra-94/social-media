@@ -9,6 +9,7 @@ import { BookmarkBtn } from "./Home/BookmarkBtn";
 import { Menu } from "./Menu/Menu";
 import { MediaContext } from "../context/MediaContext";
 import { AuthContext } from "../context/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Posts = ({ post, user }) => {
   const { state } = useContext(MediaContext);
@@ -17,7 +18,10 @@ export const Posts = ({ post, user }) => {
     (post) => post.username === profile.username
   );
 
-  console.log(editHandlerPost, "editHandlerPost");
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
   return (
     <div key={post._id} className="post">
       <div className="post-container">
@@ -47,7 +51,10 @@ export const Posts = ({ post, user }) => {
                 ) : null
               )}
             </div>
-            <div className="user-content">
+            <div
+              className="user-content"
+              onClick={() => navigate(`/singlePost/${post._id}`)}
+            >
               <div className="content">{post.content}</div>
               <div className="content-photos">
                 <img src={post.photos} alt="" />

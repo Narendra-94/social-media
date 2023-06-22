@@ -17,7 +17,6 @@ export const Bookmarks = () => {
   const newBookmark = state.posts?.filter(({ _id }) =>
     loggedInUser?.bookmarks.includes(_id)
   );
-  console.log(newBookmark);
 
   return (
     <div className="bookmark">
