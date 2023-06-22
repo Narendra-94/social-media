@@ -113,7 +113,7 @@
 .user-appreciation {
   display: flex;
   color: var(--movie-theme-main-color);
-  font-size: x-large;
+  font-size: 24px;
   justify-content: space-around;
   margin-top: 2rem;
   cursor: pointer;
@@ -132,5 +132,10 @@
 
 .like-btn {
   color: red;
-  font-size: large;
+  font-size: 22px;
+}
+
+.bookmark-btn {
+  color: saddlebrown;
+  font-size: 22px;
 }

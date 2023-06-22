@@ -20,30 +20,37 @@ export const users = [
     updatedAt: formatDate(),
     following: [
       {
-        _id: uuid(),
+        _id: "004",
         firstName: "Niharika",
         lastName: "Rakhewar",
         username: "harleyquinn",
         avatar: "https://i.postimg.cc/tCXKYbfs/Harley-Quinn.jpg",
+      },
+      {
+        _id: "002",
+        firstName: "Yashaswi",
+        lastName: "Mishra",
+        username: "baburaoapte",
+        avatar: "https://i.postimg.cc/C1jNPNmB/Baburao.jpg",
       },
     ],
     followers: [
       {
-        _id: uuid(),
+        _id: "004",
         firstName: "Niharika",
         lastName: "Rakhewar",
         username: "harleyquinn",
         avatar: "https://i.postimg.cc/tCXKYbfs/Harley-Quinn.jpg",
       },
       {
-        _id: uuid(),
+        _id: "002",
         firstName: "Yashaswi",
         lastName: "Mishra",
         username: "baburaoapte",
         avatar: "https://i.postimg.cc/C1jNPNmB/Baburao.jpg",
       },
       {
-        _id: uuid(),
+        _id: "003",
         firstName: "Akshat",
         lastName: "Mehta",
         username: "joker",
@@ -52,7 +59,7 @@ export const users = [
     ],
   },
   {
-    _id: uuid(),
+    _id: "002",
     firstName: "Yashaswi",
     lastName: "Mishra",
     username: "baburaoapte",
@@ -65,7 +72,7 @@ export const users = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "003",
     firstName: "Akshat",
     lastName: "Mehta ",
     username: "joker",
@@ -78,7 +85,7 @@ export const users = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "004",
     firstName: "Niharika",
     lastName: "Rakhewar",
     username: "harleyquinn",
@@ -91,7 +98,7 @@ export const users = [
   },
 
   {
-    _id: uuid(),
+    _id: "005",
     firstName: "John",
     lastName: "Doe",
     username: "rockybalboa",

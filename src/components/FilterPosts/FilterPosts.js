@@ -20,7 +20,6 @@ export const FilterPosts = ({ selectedFilter, setSelectedFilter }) => {
 
   const handleFilteredClick = (filter) => {
     setSelectedFilter(filter);
-    // dispatch({ type: "ON_CLICKING_FILTERED_BUTTON", payload: filter });
     setShowFilterOptions(false);
   };
 

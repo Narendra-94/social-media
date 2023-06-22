@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { makeServer } from "./server";
 import { AuthProvider } from "./context/AuthContext";
 import { MediaProvider } from "./context/MediaContext";
+import { DataProvider } from "./context/DataContext";
 
 makeServer();
 
@@ -15,7 +16,9 @@ root.render(
     <Router>
       <AuthProvider>
         <MediaProvider>
-          <App />
+          <DataProvider>
+            <App />
+          </DataProvider>
         </MediaProvider>
       </AuthProvider>
     </Router>

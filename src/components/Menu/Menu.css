@@ -1,0 +1,47 @@
+.menu-icon {
+  position: relative;
+  font-size: 2rem;
+}
+
+.menu button {
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: none;
+  text-transform: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 2rem;
+  line-height: inherit;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.menu-icon:hover {
+  background-color: black;
+}
+
+.menu-options {
+  position: absolute;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  border-color: #5a5a5a80;
+  background-color: var(--movie-theme-nav-bcakground-color);
+  box-shadow: 0 10px 15px -3px black, 0 4px 6px -4px black;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 1.5rem 1.75rem;
+}
+
+.menu-options button {
+  font-size: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}

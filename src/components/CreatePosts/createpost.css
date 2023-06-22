@@ -54,3 +54,21 @@ textarea {
   margin-top: -10px;
   border: none;
 }
+
+.selected-photo {
+  width: 35%;
+  height: 100%;
+  margin-bottom: 50px;
+}
+
+.selected-photo img {
+  width: 100%;
+}
+
+.post-container {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

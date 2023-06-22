@@ -32,14 +32,7 @@ export const Login = () => {
       localStorage.setItem("user", JSON.stringify(data.foundUser));
       navigate("/");
       setToken(data.encodedToken);
-      setProfile(
-        data.foundUser
-        // ...profile,
-        // firstName: data.foundUser.firstName,
-        // lastName: data.foundUser.lastName,
-        // username: data.foundUser.username,
-        // avatar: data.foundUser.avatar,
-      );
+      setProfile(data.foundUser);
     }
   };
 

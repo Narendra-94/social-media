@@ -13,12 +13,22 @@ import { Likes } from "./Likes";
 import { getSortedPosts } from "../../utils";
 import { BookmarkBtn } from "./BookmarkBtn";
 import { Posts } from "../Posts";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Home = () => {
   const { state } = useContext(MediaContext);
+  const { profile } = useContext(AuthContext);
   const [selectedFilter, setSelectedFilter] = useState("latest");
-  const sortedPosts = getSortedPosts(state.posts, selectedFilter);
-  console.log(state.users, "users");
+  const postsFollowing = state.posts?.filter((item) =>
+    profile?.following.some(
+      (followingUser) =>
+        followingUser.username === item.username ||
+        profile.username === item.username
+    )
+  );
+
+  const sortedPosts = getSortedPosts(postsFollowing, selectedFilter);
+
   return (
     <div className="home">
       <PageHeader headerText="Home" />

@@ -4,7 +4,7 @@ import { BsBookmarkFill } from "react-icons/bs";
 import { AuthContext } from "../../context/AuthContext";
 import { MediaContext } from "../../context/MediaContext";
 
-export const BookmarkBtn = ({ post, user }) => {
+export const BookmarkBtn = ({ post }) => {
   const { state, dispatch } = useContext(MediaContext);
   const { token, profile } = useContext(AuthContext);
 
@@ -54,7 +54,14 @@ export const BookmarkBtn = ({ post, user }) => {
 
   return (
     <div>
-      <BiBookmark onClick={() => bookmarksPostByUser(post)} />
+      {isBookmark ? (
+        <BsBookmarkFill
+          className="bookmark-btn"
+          onClick={() => bookmarksPostByUser(post)}
+        />
+      ) : (
+        <BiBookmark onClick={() => bookmarksPostByUser(post)} />
+      )}
     </div>
   );
 };

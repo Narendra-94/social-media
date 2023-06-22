@@ -1,0 +1,57 @@
+.edit-modal {
+  background-color: black;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.edit-modal h2 {
+  margin-top: 0;
+}
+
+.edit-modal p {
+  margin-bottom: 10px;
+}
+
+.edit-image {
+  position: relative;
+}
+
+.delete-image-btn {
+  position: absolute;
+  right: 0px;
+  padding: 0px;
+}
+.delete-image-btn svg {
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+
+.edit-modal .save-btn {
+  padding: 2px 20px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #373b44, #4286f4);
+  border: none;
+  font-size: 1.5rem;
+}
+
+.edit-modal .cancel-btn {
+  padding: 2px 20px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #373b44, #4286f4);
+  border: none;
+  font-size: 1.5rem;
+}
+
+.edit-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.decision-btn {
+  display: flex;
+  gap: 1rem;
+}

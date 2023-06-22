@@ -1,15 +1,23 @@
-import React from "react";
-import { SlOptionsVertical } from "react-icons/sl";
+import React, { useContext } from "react";
 
 import dayjs from "dayjs";
 import "dayjs/locale/en";
 import { BiComment } from "react-icons/bi";
 import { BsShare } from "react-icons/bs";
-
 import { Likes } from "./Home/Likes";
-
 import { BookmarkBtn } from "./Home/BookmarkBtn";
+import { Menu } from "./Menu/Menu";
+import { MediaContext } from "../context/MediaContext";
+import { AuthContext } from "../context/AuthContext";
+
 export const Posts = ({ post, user }) => {
+  const { state } = useContext(MediaContext);
+  const { profile } = useContext(AuthContext);
+  const editHandlerPost = state.posts.filter(
+    (post) => post.username === profile.username
+  );
+
+  console.log(editHandlerPost, "editHandlerPost");
   return (
     <div key={post._id} className="post">
       <div className="post-container">
@@ -33,10 +41,11 @@ export const Posts = ({ post, user }) => {
                   </p>
                 </div>
               </div>
-
-              <div className="menu">
-                <SlOptionsVertical />
-              </div>
+              {editHandlerPost.map((content) =>
+                content._id === post._id ? (
+                  <Menu post={post} user={user} />
+                ) : null
+              )}
             </div>
             <div className="user-content">
               <div className="content">{post.content}</div>
@@ -51,7 +60,7 @@ export const Posts = ({ post, user }) => {
 
               <BiComment />
               <div>
-                <BookmarkBtn post={post} user={user} />
+                <BookmarkBtn post={post} />
               </div>
 
               <BsShare />
