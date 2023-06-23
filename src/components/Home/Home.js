@@ -8,19 +8,19 @@ import { FilterPosts } from "../FilterPosts/FilterPosts";
 import { CreatePosts } from "../CreatePosts/CreatePosts";
 import { getSortedPosts } from "../../utils";
 import { Posts } from "../Posts";
-import { AuthContext } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const { state } = useContext(MediaContext);
-  const { profile } = useContext(AuthContext);
+
   const [selectedFilter, setSelectedFilter] = useState("latest");
-  const postsFollowing = state.posts?.filter((item) =>
-    profile?.following.some(
-      (followingUser) =>
-        followingUser.username === item.username ||
-        profile.username === item.username
-    )
+
+  const socialUser = JSON.parse(localStorage.getItem("user"));
+
+  const postsFollowing = state.posts?.filter(
+    (item) =>
+      socialUser?.following.some(
+        (followingUser) => followingUser.username === item.username
+      ) || socialUser.username === item.username
   );
 
   const sortedPosts = getSortedPosts(postsFollowing, selectedFilter);

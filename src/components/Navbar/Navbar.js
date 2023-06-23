@@ -22,7 +22,7 @@ export const Navbar = () => {
         </div>
 
         <div className="navbar-profile">
-          <Link className="profile-link">
+          <Link to={`/profile`} className="profile-link">
             <div className="avatar-image">
               <img src={profile.avatar} alt="User Avatar" className="avatar" />
             </div>

@@ -12,15 +12,24 @@ import { AuthContext } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Posts = ({ post, user }) => {
+  const socialUser = JSON.parse(localStorage.getItem("user"));
   const { state } = useContext(MediaContext);
-  const { profile } = useContext(AuthContext);
+
   const editHandlerPost = state.posts.filter(
-    (post) => post.username === profile.username
+    (post) => post.username === socialUser.username
   );
 
   const navigate = useNavigate();
 
   const location = useLocation();
+  const handleUserProfile = () => {
+    const currentUser = user.username === socialUser.username;
+    if (currentUser) {
+      navigate(`/profile`);
+    } else {
+      navigate(`/profile/${user.username}`);
+    }
+  };
 
   return (
     <div key={post._id} className="post">
@@ -31,7 +40,10 @@ export const Posts = ({ post, user }) => {
           </div>
           <div className="user-content-container">
             <div className="user-content-header">
-              <div className="post-user-name-container">
+              <div
+                className="post-user-name-container"
+                onClick={handleUserProfile}
+              >
                 <div className="post-user-name">
                   <p className="user-fullname">
                     {user?.firstName} {user?.lastName}

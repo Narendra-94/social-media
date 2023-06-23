@@ -24,6 +24,7 @@
 .suggestions-container {
   display: flex;
   margin: 20px;
+  cursor: pointer;
 }
 
 .user-container {

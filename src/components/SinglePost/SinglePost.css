@@ -1,0 +1,22 @@
+.single-post-container {
+  display: flex;
+  padding: 10px;
+  background-color: transparent;
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  align-items: center;
+  color: var(--movie-theme-main-color);
+  gap: 1rem;
+}
+.home-route {
+  font-size: 20px;
+  cursor: pointer;
+}
+.single-post-header {
+  font-size: 20px;
+}
+
+.single-post-header h2 {
+}

@@ -9,6 +9,8 @@ import { Bookmarks } from "./components/Bookmarks/Bookmarks";
 import { Explore } from "./components/Explore/Explore";
 import { MainContainer } from "./components/MainContainer/MainContainer";
 import { SinglePost } from "./components/SinglePost/SinglePost";
+import { Profile } from "./components/Profile/Profile";
+import { AnyProfile } from "./components/Profile/AnyProfile";
 
 function App() {
   return (
@@ -53,10 +55,18 @@ function App() {
             }
           />
           <Route
+            path="/profile"
+            element={
+              <MainContainer>
+                <Profile />
+              </MainContainer>
+            }
+          />
+          <Route
             path="/profile/:username"
             element={
               <MainContainer>
-                <SinglePost />
+                <AnyProfile />
               </MainContainer>
             }
           />

@@ -13,7 +13,9 @@
 
 .home,
 .bookmark,
-.single-post {
+.single-post,
+.profile,
+.explore {
   width: 50%;
   border: 1px solid #4286f4;
   height: 100%;

@@ -43,6 +43,40 @@ export const reducer = (state, action) => {
       return { ...state, posts: action.payload };
     }
 
+    case "ADD_FOLLOWER": {
+      return {
+        ...state,
+        users: state.users.map((data) =>
+          data.username === action.payload.followUser.username
+            ? { ...data, followers: action.payload.followUser.followers }
+            : data
+        ),
+      };
+    }
+
+    case "ADD_FOLLOWING": {
+      return {
+        ...state,
+        users: state.users.map((data) =>
+          data.username === action.payload.user.username
+            ? { ...data, following: action.payload.user.following }
+            : data
+        ),
+      };
+    }
+
+    case "REMOVE_FOLLOWER":
+      return {
+        ...state,
+        users: state.users.map((el) =>
+          el.username === action.payload.unfollowedUser.username
+            ? {
+                ...el,
+                followers: action.payload.unfollowedUser.followers,
+              }
+            : el
+        ),
+      };
     default:
       return state;
   }
