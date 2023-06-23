@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import "./suggestions.css";
-import "../Home/home.css";
 import { Search } from "./Search/Search";
 import { MediaContext } from "../../context/MediaContext";
 import { useNavigate } from "react-router-dom";
+import { FollowBtn } from "../Profile/FollowBtn";
 
 export const Suggestions = () => {
   const { state } = useContext(MediaContext);
@@ -14,20 +14,12 @@ export const Suggestions = () => {
     (dbUser) => dbUser.username === socialUser.username
   );
 
-  const filteredUsers = state.users
-    ?.filter((dbUser) => dbUser.username !== userData?.username)
-    .filter(
-      (eachUser) =>
-        !userData?.following.find((item) => item.username === eachUser.username)
-    );
-  // const socialUserFollowing = socialUser.following;
-  // const suggestedUser = state.user.filter((el)=>)
-  const nnn = socialUser.following.map((el) => el.username);
-  const ppp = state.users?.filter(
-    (el) => el.username !== socialUser.username && !nnn.includes(el.username)
+  const followingData = socialUser.following.map((el) => el.username);
+  const filterSuggestions = state.users?.filter(
+    (el) =>
+      el.username !== socialUser.username &&
+      !followingData.includes(el.username)
   );
-
-  console.log(filteredUsers, "userdata in suggestion");
 
   const navigate = useNavigate();
 
@@ -36,24 +28,26 @@ export const Suggestions = () => {
       <Search />
       <div className="suggestions-card">
         <h3>Suggested Users</h3>
-        {ppp.map((user) => (
-          <div
-            className="suggestions-container"
-            onClick={() => navigate(`/profile/${user.username}`)}
-          >
-            <div className="avatar-image">
+        {filterSuggestions.map((user) => (
+          <div className="suggestions-container">
+            <div
+              className="avatar-image"
+              onClick={() => navigate(`/profile/${user.username}`)}
+            >
               <img src={user.avatar} alt="" className="avatar" />
             </div>
-            <div className="suggestions-data">
+            <div
+              className="suggestions-data"
+              onClick={() => navigate(`/profile/${user.username}`)}
+            >
               <div className="user-container">
                 <p className="name">
                   {user.firstName} {user.lastName}
                 </p>
                 <p className="username">@{user.username}</p>
               </div>
-
-              <button className="follow-button">Follow</button>
             </div>
+            <FollowBtn userData={user} />
           </div>
         ))}
       </div>

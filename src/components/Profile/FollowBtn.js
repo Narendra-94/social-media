@@ -28,8 +28,10 @@ export const FollowBtn = ({ userData }) => {
   };
 
   return (
-    <div className="profile-button follow-button">
-      <button onClick={handleUserFollow}>Follow</button>
+    <div className=" ">
+      <button onClick={handleUserFollow} className="follow-btn">
+        Follow
+      </button>
     </div>
   );
 };

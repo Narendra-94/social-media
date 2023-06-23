@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MediaContext } from "../../context/MediaContext";
 import { AuthContext } from "../../context/AuthContext";
@@ -8,10 +8,40 @@ import { FiLogOut } from "react-icons/fi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { UnfollowBtn } from "./UnfollowBtn";
 import { FollowBtn } from "./FollowBtn";
+import { Modal } from "../Modal";
+import { Following } from "./Following";
+import { Follower } from "./Follower";
 
 export const AnyProfile = () => {
-  const { username } = useParams();
   const { state } = useContext(MediaContext);
+  const [showModal, setShowModal] = useState(false);
+  const [showFollowingModal, setShowFollowingModal] = useState(false);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
+  const { username } = useParams();
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const openFollowingModal = () => {
+    setShowFollowingModal(true);
+  };
+
+  const closeFollowingModal = () => {
+    setShowFollowingModal(false);
+  };
+
+  const openFollowersModal = () => {
+    setShowFollowersModal(true);
+  };
+
+  const closeFollowersModal = () => {
+    setShowFollowersModal(false);
+  };
 
   const naviagte = useNavigate();
 
@@ -63,15 +93,37 @@ export const AnyProfile = () => {
                   </a>
                 </div>
 
-                <div className="follow-content">
-                  <span>
+                <div className="follow-content ">
+                  <span
+                    onClick={openFollowingModal}
+                    className="following-length"
+                  >
                     <b>{userData.following.length} </b>
                     <span>Following</span>
                   </span>
-                  <span>
+                  {showFollowingModal && (
+                    <Modal>
+                      <Following
+                        socialUser={userData}
+                        onClose={closeFollowingModal}
+                      />
+                    </Modal>
+                  )}
+                  <span
+                    onClick={openFollowersModal}
+                    className="follower-length"
+                  >
                     <b>{userData.followers.length} </b>
                     <span>Followers</span>
                   </span>
+                  {showFollowersModal && (
+                    <Modal>
+                      <Follower
+                        socialUser={userData}
+                        onClose={closeFollowersModal}
+                      />
+                    </Modal>
+                  )}
                 </div>
               </div>
 

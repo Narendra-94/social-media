@@ -77,6 +77,15 @@ export const reducer = (state, action) => {
             : el
         ),
       };
+
+    case "EDIT_USER":
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          action.payload.username === user.username ? action.payload : user
+        ),
+      };
+
     default:
       return state;
   }

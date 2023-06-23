@@ -83,13 +83,14 @@
   cursor: pointer;
 }
 
-.profile-button button {
+.profile-button .edit-profile-button {
   padding: 5px 25px;
   border-radius: 20px;
   background-color: transparent;
   border-color: #4286f4;
   color: var(--movie-theme-main-color);
   font-weight: 600;
+  cursor: pointer;
 }
 
 .edit-button div {
@@ -98,6 +99,85 @@
   cursor: pointer;
 }
 
-.follow-button button {
+.follow-button .follow-btn {
   background: linear-gradient(to right, #373b44, #4286f4);
+}
+
+.follower-modal,
+.following-modal {
+  background-color: black;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.following-header,
+.follower-header {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--movie-theme-main-color);
+}
+
+.following-container,
+.follower-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 10px;
+}
+
+.following-container-information,
+.follower-container-information {
+  display: flex;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+
+.following-image,
+.follower-image {
+  max-width: 100%;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.following-username-information,
+.follower-username-information {
+  margin-top: -0.125rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.following-close-btn,
+.follower-close-btn {
+  padding: 1.125rem 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--movie-theme-main-color);
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+.following-username-information .following-name,
+.follower-name {
+  color: var(--movie-theme-main-color);
+}
+
+.following-username,
+.follower-username {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.following-length:hover,
+.follower-length:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

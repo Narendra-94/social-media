@@ -25,8 +25,13 @@ export const UnfollowBtn = ({ userData }) => {
   };
 
   return (
-    <div className="profile-button">
-      <button onClick={() => handleUnfollowUser(userData)}>Unfollow</button>
+    <div>
+      <button
+        onClick={() => handleUnfollowUser(userData)}
+        className="unfollow-btn"
+      >
+        Unfollow
+      </button>
     </div>
   );
 };

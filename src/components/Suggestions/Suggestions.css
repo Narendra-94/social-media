@@ -25,6 +25,7 @@
   display: flex;
   margin: 20px;
   cursor: pointer;
+  align-items: center;
 }
 
 .user-container {
@@ -51,19 +52,51 @@
   font-weight: 700;
 }
 
-.suggestions-card .follow-button {
+/* .follow-button {
   font-size: 1.2rem;
   font-weight: 700;
   border-radius: 20px;
-  background: linear-gradient(to right, #373b44, #4286f4);
   border: none;
   height: fit-content;
   padding: 8px 20px;
   color: var(--movie-theme-main-color);
-}
+} */
 
 .username {
   font-size: 1.2rem;
   font-weight: 700;
   color: #e2e2e292;
+}
+
+.avatar-image {
+  width: 4rem;
+  height: 4rem;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+}
+
+.suggested-name {
+  display: flex;
+}
+
+.follow-btn {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #373b44, #4286f4);
+  margin-top: -10px;
+  border: none;
+  cursor: pointer;
+}
+
+.unfollow-btn {
+  padding: 5px 20px;
+  border-radius: 20px;
+  border-color: #4286f4;
+  margin-top: -10px;
+  background: transparent;
+  color: var(--movie-theme-main-color);
+  cursor: pointer;
 }

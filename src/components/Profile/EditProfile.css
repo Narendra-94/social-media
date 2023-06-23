@@ -1,0 +1,119 @@
+.edit-modal {
+  background-color: black;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.edit-modal h2 {
+  margin-top: 0;
+}
+
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  width: 100%;
+}
+
+.profile-edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-edit-form div {
+  color: var(--movie-theme-main-color);
+}
+
+.profile-edit-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-edit-close-button {
+  padding: 1.125rem 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--movie-theme-main-color);
+  font-size: 2.3rem;
+  cursor: pointer;
+}
+
+.profile-edit-name {
+  font-size: 2.3rem;
+  line-height: 2.75rem;
+}
+
+.edit-profile-save-button {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #373b44, #4286f4);
+  border: none;
+  cursor: pointer;
+}
+
+.profile-edit-label {
+  position: relative;
+  cursor: pointer;
+  width: max-content;
+  margin: 0.5rem auto;
+}
+
+.profile-edit-photo-container {
+  font-size: 1.5rem;
+  height: 8rem;
+  width: 8rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.profile-edit-photo {
+  width: 100%;
+  border-radius: 9999px;
+}
+
+.profile-add-photo {
+  position: absolute;
+  color: var(--movie-theme-main-color);
+  bottom: 0;
+  font-size: 2.2rem;
+  right: 0;
+}
+
+.profile-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #4286f4;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.profile-name-label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 5px;
+}
+
+.profile-name-label .profile-edit-label-name {
+  color: #e2e2e292;
+  font-size: 1.2rem;
+}
+
+.profile-name-label-input {
+  border: none;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 1.25rem;
+}

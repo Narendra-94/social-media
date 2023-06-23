@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MediaContext } from "../../context/MediaContext";
 import { AuthContext } from "../../context/AuthContext";
@@ -8,11 +8,42 @@ import { FiLogOut } from "react-icons/fi";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { UnfollowBtn } from "./UnfollowBtn";
 import { FollowBtn } from "./FollowBtn";
+import { EditProfile } from "./EditProfile";
+import { Modal } from "../Modal";
+import { Follower } from "./Follower";
+import { Following } from "./Following";
 
 export const Profile = () => {
   const { state } = useContext(MediaContext);
+  const [showModal, setShowModal] = useState(false);
+  const [showFollowingModal, setShowFollowingModal] = useState(false);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
 
-  const naviagte = useNavigate();
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const openFollowingModal = () => {
+    setShowFollowingModal(true);
+  };
+
+  const closeFollowingModal = () => {
+    setShowFollowingModal(false);
+  };
+
+  const openFollowersModal = () => {
+    setShowFollowersModal(true);
+  };
+
+  const closeFollowersModal = () => {
+    setShowFollowersModal(false);
+  };
+
+  const navigate = useNavigate();
 
   const socialUser = JSON.parse(localStorage.getItem("user"));
 
@@ -20,18 +51,14 @@ export const Profile = () => {
     (dbUser) => dbUser.username === socialUser.username
   );
 
-  console.log(userData, "userData");
-
   const postDetails = state.posts?.filter(
     (post) => post.username === userData.username
   );
-  console.log(state.users, "users in profile");
-  console.log(userData, " in profile");
 
   return (
     <div className="profile">
       <div className="profile-header-container">
-        <span className="home-route" onClick={() => naviagte("/")}>
+        <span className="home-route" onClick={() => navigate("/")}>
           <AiOutlineArrowLeft />
         </span>
         <div>
@@ -64,21 +91,51 @@ export const Profile = () => {
                   </a>
                 </div>
 
-                <div className="follow-content">
-                  <span>
+                <div className="follow-content ">
+                  <span
+                    onClick={openFollowingModal}
+                    className="following-length"
+                  >
                     <b>{socialUser.following.length} </b>
                     <span>Following</span>
                   </span>
-                  <span>
+                  {showFollowingModal && (
+                    <Modal>
+                      <Following
+                        socialUser={socialUser}
+                        onClose={closeFollowingModal}
+                      />
+                    </Modal>
+                  )}
+                  <span
+                    onClick={openFollowersModal}
+                    className="follower-length"
+                  >
                     <b>{socialUser.followers.length} </b>
                     <span>Followers</span>
                   </span>
+                  {showFollowersModal && (
+                    <Modal>
+                      <Follower
+                        socialUser={socialUser}
+                        onClose={closeFollowersModal}
+                      />
+                    </Modal>
+                  )}
                 </div>
               </div>
 
               {socialUser.username === userData.username ? (
-                <div className="edit-button profile-button">
-                  <button>Edit Profile</button>
+                <div className="profile-button edit-button">
+                  <button className="edit-profile-button" onClick={openModal}>
+                    Edit Profile
+                  </button>
+                  {showModal && (
+                    <Modal>
+                      <EditProfile userData={userData} onClose={closeModal} />
+                    </Modal>
+                  )}
+
                   <div>
                     <FiLogOut />
                   </div>
@@ -94,7 +151,7 @@ export const Profile = () => {
           </div>
 
           {postDetails.map((post) => (
-            <Posts post={post} user={userData} />
+            <Posts post={post} user={userData} key={post.id} />
           ))}
         </div>
       </div>
