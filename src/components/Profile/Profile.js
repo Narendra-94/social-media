@@ -54,7 +54,10 @@ export const Profile = () => {
   const postDetails = state.posts?.filter(
     (post) => post.username === userData.username
   );
-
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <div className="profile">
       <div className="profile-header-container">
@@ -136,7 +139,7 @@ export const Profile = () => {
                     </Modal>
                   )}
 
-                  <div>
+                  <div onClick={handleLogout}>
                     <FiLogOut />
                   </div>
                 </div>

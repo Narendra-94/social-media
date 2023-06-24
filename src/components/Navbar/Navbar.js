@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
 import { Logo } from "../Logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Navbar = () => {
   const { profile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <aside className="navbar">
       <div className="navbar-container">
@@ -17,7 +22,7 @@ export const Navbar = () => {
             <Link to="/">Home</Link>
             <Link to="/explore">Explore</Link>
             <Link to="/bookmarks">Bookmarks</Link>
-            <Link>Logout</Link>
+            <span onClick={handleLogout}>Logout</span>
           </div>
         </div>
 

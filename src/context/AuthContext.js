@@ -8,14 +8,9 @@ export const AuthProvider = ({ children }) => {
 
   const [token, setToken] = useState(encodedToken || "");
 
-  const [profile, setProfile] = useState(
-    user
-    // firstName: user.firstName || "",
-    // lastName: user.lastName || "",
-    // username: user.username || "",
-    // avatar: user.avatar || "",
-  );
-  console.log(profile);
+  const [profile, setProfile] = useState(user);
+  const [signUpData, setSignUpData] = useState(user);
+
   return (
     <AuthContext.Provider
       value={{
@@ -23,6 +18,8 @@ export const AuthProvider = ({ children }) => {
         setToken,
         profile,
         setProfile,
+        signUpData,
+        setSignUpData,
       }}
     >
       {children}
