@@ -34,6 +34,7 @@ export const Search = () => {
     return () => {
       window.removeEventListener("click", handleWindowClick);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const closeSearchContainer = () => {

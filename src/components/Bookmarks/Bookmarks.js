@@ -1,10 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { MediaContext } from "../../context/MediaContext";
 import "../Home/home.css";
-import dayjs from "dayjs";
-import "dayjs/locale/en";
-
 import { AuthContext } from "../../context/AuthContext";
 import { Posts } from "../Posts";
 import { PageHeader } from "../PageHeader/PageHeader";

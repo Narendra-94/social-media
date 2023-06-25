@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MediaContext } from "../../context/MediaContext";
-import { AuthContext } from "../../context/AuthContext";
 import { Posts } from "../Posts";
 import "./profile.css";
 import { FiLogOut } from "react-icons/fi";

@@ -1,5 +1,3 @@
-import { posts } from "../backend/db/posts";
-
 export const initialState = {
   posts: [],
   users: [],

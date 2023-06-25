@@ -1,14 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { LuSlidersHorizontal } from "react-icons/lu";
 import "./filterposts.css";
 import { BsFire } from "react-icons/bs";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
-import { MediaContext } from "../../context/MediaContext";
 
 export const FilterPosts = ({ selectedFilter, setSelectedFilter }) => {
-  const { dispatch } = useContext(MediaContext);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
-  // const [selectedFilter, setSelectedFilter] = useState("latest");
   const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
@@ -16,6 +13,7 @@ export const FilterPosts = ({ selectedFilter, setSelectedFilter }) => {
       handleFilteredClick("latest");
       setInitialRender(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialRender]);
 
   const handleFilteredClick = (filter) => {

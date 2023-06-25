@@ -2,8 +2,6 @@ import React, { useContext, useState } from "react";
 import { PageHeader } from "../PageHeader/PageHeader";
 import { MediaContext } from "../../context/MediaContext";
 import "./home.css";
-import dayjs from "dayjs";
-import "dayjs/locale/en";
 import { FilterPosts } from "../FilterPosts/FilterPosts";
 import { CreatePosts } from "../CreatePosts/CreatePosts";
 import { getSortedPosts } from "../../utils";
