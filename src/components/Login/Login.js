@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Logo } from "../Logo";
-import { AiFillEye } from "react-icons/ai";
-import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 import { Link, useNavigate } from "react-router-dom";
 import "../SignUp/signup.css";
 import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -13,7 +15,9 @@ export const Login = () => {
     password: "",
   });
 
-  const { setToken, profile, setProfile } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { setToken, setProfile, profile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLoginGuest = async () => {
@@ -34,6 +38,16 @@ export const Login = () => {
       setToken(data.encodedToken);
       setProfile(data.foundUser);
     }
+    toast(`🎭 Welcome ${profile.firstName} ${profile.lastName}`, {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   const handleSubmit = (e) => {
@@ -66,7 +80,7 @@ export const Login = () => {
             <label htmlFor="">Password</label>
             <div className="password-container">
               <input
-                type="text"
+                type={showPassword ? "password" : "text"}
                 className="password"
                 placeholder="KitneAadmiThe@3"
                 value={loginData.password}
@@ -74,7 +88,17 @@ export const Login = () => {
                   setLoginData({ ...loginData, password: e.target.value })
                 }
               />
-              <AiFillEye className="eye" />
+              {showPassword ? (
+                <AiFillEyeInvisible
+                  className="eye"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <AiFillEye
+                  className="eye"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
             </div>
           </div>
           <div className="login-button-container">

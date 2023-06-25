@@ -5,6 +5,8 @@ import { BsImage } from "react-icons/bs";
 import { v4 as uuid } from "uuid";
 import { MediaContext } from "../../context/MediaContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CreatePosts = () => {
   const { token, profile } = useContext(AuthContext);
@@ -29,6 +31,18 @@ export const CreatePosts = () => {
   };
 
   const handlePosts = async (createPost) => {
+    toast.success("Post Created", {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
+
     const response = await fetch(`/api/posts`, {
       method: "POST",
       headers: {
@@ -40,7 +54,6 @@ export const CreatePosts = () => {
     console.log(data, "create");
     dispatch({ type: "CREATE_POSTS", payload: data.posts });
 
-    // Clear the input fields
     setCreatePost({
       _id: uuid(),
       content: "",

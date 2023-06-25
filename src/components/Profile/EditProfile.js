@@ -3,6 +3,8 @@ import "./EditProfile.css";
 import { BsFillCameraFill } from "react-icons/bs";
 import { AuthContext } from "../../context/AuthContext";
 import { MediaContext } from "../../context/MediaContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const EditProfile = ({ userData, onClose }) => {
   const [profile, setProfile] = useState({ ...userData });
@@ -31,6 +33,18 @@ export const EditProfile = ({ userData, onClose }) => {
   };
 
   const handleUser = async () => {
+    toast.success("Profile Updated", {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
+
     const response = await fetch(`/api/users/edit`, {
       method: "POST",
       headers: {

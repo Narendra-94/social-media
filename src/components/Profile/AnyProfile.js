@@ -14,18 +14,9 @@ import { Follower } from "./Follower";
 
 export const AnyProfile = () => {
   const { state } = useContext(MediaContext);
-  const [showModal, setShowModal] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
   const { username } = useParams();
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
 
   const openFollowingModal = () => {
     setShowFollowingModal(true);

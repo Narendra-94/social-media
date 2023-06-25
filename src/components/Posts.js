@@ -7,12 +7,19 @@ import { Likes } from "./Home/Likes";
 import { BookmarkBtn } from "./Home/BookmarkBtn";
 import { Menu } from "./Menu/Menu";
 import { MediaContext } from "../context/MediaContext";
-import { AuthContext } from "../context/AuthContext";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { Loader } from "./Loader/Loader";
 
 export const Posts = ({ post, user }) => {
-  const socialUser = JSON.parse(localStorage.getItem("user"));
+  // const [isLoader, setIsLoader] = useState(true);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoader(false);
+  //   }, 1000);
+  // }, []);
+
   const { state } = useContext(MediaContext);
+  const socialUser = JSON.parse(localStorage.getItem("user"));
 
   const editHandlerPost = state.posts.filter(
     (post) => post?.username === socialUser?.username
@@ -20,7 +27,6 @@ export const Posts = ({ post, user }) => {
 
   const navigate = useNavigate();
 
-  const location = useLocation();
   const handleUserProfile = () => {
     const currentUser = user?.username === socialUser?.username;
     if (currentUser) {

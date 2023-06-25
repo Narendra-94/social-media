@@ -12,6 +12,8 @@ import { EditProfile } from "./EditProfile";
 import { Modal } from "../Modal";
 import { Follower } from "./Follower";
 import { Following } from "./Following";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Profile = () => {
   const { state } = useContext(MediaContext);
@@ -55,6 +57,17 @@ export const Profile = () => {
     (post) => post.username === userData.username
   );
   const handleLogout = () => {
+    toast.success(`Logged Out `, {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
     localStorage.clear();
     navigate("/login");
   };

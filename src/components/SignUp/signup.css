@@ -47,6 +47,7 @@ label {
   color: #1dfbf2;
   transform: translateY(75%);
   font-size: 12px;
+  cursor: pointer;
 }
 
 input {

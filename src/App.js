@@ -11,11 +11,13 @@ import { MainContainer } from "./components/MainContainer/MainContainer";
 import { SinglePost } from "./components/SinglePost/SinglePost";
 import { Profile } from "./components/Profile/Profile";
 import { AnyProfile } from "./components/Profile/AnyProfile";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
       <div className="App-main-page-content">
+        <ToastContainer toastClassName="custom-toast" />
         <Routes>
           <Route path="/landing-page" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />

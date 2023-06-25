@@ -3,6 +3,9 @@ import { BiBookmark } from "react-icons/bi";
 import { BsBookmarkFill } from "react-icons/bs";
 import { AuthContext } from "../../context/AuthContext";
 import { MediaContext } from "../../context/MediaContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../../index.css";
 
 export const BookmarkBtn = ({ post }) => {
   const { state, dispatch } = useContext(MediaContext);
@@ -14,6 +17,17 @@ export const BookmarkBtn = ({ post }) => {
   const isBookmark = loggedInUser?.bookmarks?.includes(post?._id);
 
   const bookmarkHandler = async (post) => {
+    toast.success("Post Added to bookmark", {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
     const response = await fetch(`/api/users/bookmark/${post._id}`, {
       method: "POST",
       headers: {
@@ -30,6 +44,18 @@ export const BookmarkBtn = ({ post }) => {
   };
 
   const bookmarkRemoveHandler = async (post) => {
+    toast.success("Post Removed from bookmark", {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
+
     const response = await fetch(`/api/users/remove-bookmark/${post._id}`, {
       method: "POST",
       headers: {

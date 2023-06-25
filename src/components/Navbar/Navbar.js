@@ -3,11 +3,24 @@ import { Logo } from "../Logo";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Navbar = () => {
   const { profile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogout = () => {
+    toast.success(`Logged Out `, {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
     localStorage.clear();
     navigate("/login");
   };

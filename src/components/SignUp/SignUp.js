@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./signup.css";
 import { Logo } from "../Logo";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AvatarGenerator } from "random-avatar-generator";
 
 export const SignUp = () => {
-  const { setToken, profile, setProfile, signUpData, setSignUpData } =
+  const { setToken, setProfile, signUpData, setSignUpData } =
     useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -19,7 +25,7 @@ export const SignUp = () => {
       [fieldName]: value,
     }));
   };
-
+  const generator = new AvatarGenerator();
   const handleSignUp = async () => {
     const validationErrors = {};
 
@@ -45,29 +51,36 @@ export const SignUp = () => {
       validationErrors.confirmPassword = "Passwords don't match";
     }
 
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
-
     if (signUpData.password === signUpData.confirmPassword) {
       try {
+        const avatar = generator.generateRandomAvatar(signUpData.firstName);
         const response = await fetch("/api/auth/signup", {
           method: "POST",
           body: JSON.stringify({
             firstName: signUpData.firstName,
             lastName: signUpData.lastName,
-            email: signUpData.email,
+            username: signUpData.username,
             password: signUpData.password,
+            avatar: avatar,
           }),
         });
         const data = await response.json();
-        console.log(data, "signup");
         localStorage.setItem("token", data.encodedToken);
         localStorage.setItem("user", JSON.stringify(data.createdUser));
         setToken(data.encodedToken);
         navigate("/");
         setProfile(data.createdUser);
+
+        toast(`🎭 Welcome ${signUpData.firstName} ${signUpData.lastName}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       } catch (err) {
         alert(err);
       }
@@ -92,7 +105,7 @@ export const SignUp = () => {
             <label htmlFor="">Firstname</label>
             <input
               type="text"
-              placeholder="Gabbar Singh"
+              placeholder="Gabbar "
               onChange={(e) => handleInput(e, "firstName")}
               required
             />
@@ -101,7 +114,7 @@ export const SignUp = () => {
             <label htmlFor="">Lastname</label>
             <input
               type="text"
-              placeholder="Gabbar Singh"
+              placeholder=" Singh"
               onChange={(e) => handleInput(e, "lastName")}
               required
             />
@@ -115,34 +128,50 @@ export const SignUp = () => {
               required
             />
           </div>
-          {/* <div className="signup-input-email">
-            <label htmlFor="">Email Address</label>
-            <input type="text" placeholder="gabbar@sholay.com" />
-          </div> */}
           <div className="signup-input-password">
             <label htmlFor="">Password</label>
             <div className="password-container">
               <input
-                type="text"
+                type={showPassword ? "password" : "text"}
                 className="password"
                 placeholder="KitneAadmiThe@3"
                 onChange={(e) => handleInput(e, "password")}
                 required
               />
-              <AiFillEye className="eye" />
+              {showPassword ? (
+                <AiFillEyeInvisible
+                  className="eye"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <AiFillEye
+                  className="eye"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
             </div>
           </div>
           <div className="signup-input-confirm-password">
             <label htmlFor="">Confirm Password</label>
             <div className="password-container">
               <input
-                type="text"
+                type={showConfirmPassword ? "password" : "text"}
                 className="confirm-password"
                 placeholder="KitneAadmiThe@3"
                 onChange={(e) => handleInput(e, "confirmPassword")}
                 required
               />
-              <AiFillEye className="eye" />
+              {showConfirmPassword ? (
+                <AiFillEyeInvisible
+                  className="eye"
+                  onClick={() => setShowConfirmPassword(false)}
+                />
+              ) : (
+                <AiFillEye
+                  className="eye"
+                  onClick={() => setShowConfirmPassword(true)}
+                />
+              )}
             </div>
           </div>
 
