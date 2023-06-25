@@ -48,7 +48,7 @@ export const EditProfile = ({ userData, onClose }) => {
   };
 
   return (
-    <div className="edit-modal">
+    <div className="edit-profile-modal">
       <form action="" className="profile-edit-form" onSubmit={handleSubmit}>
         <div className="profile-edit-header">
           <div className="profile-edit-container">

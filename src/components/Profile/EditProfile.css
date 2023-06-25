@@ -1,4 +1,4 @@
-.edit-modal {
+.edit-profile-modal {
   background-color: black;
   padding: 20px;
   border-radius: 4px;
@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 
-.edit-modal h2 {
+.edit-profile-modal h2 {
   margin-top: 0;
 }
 

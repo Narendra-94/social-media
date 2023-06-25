@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { BsImage } from "react-icons/bs";
 import { v4 as uuid } from "uuid";
 import { MediaContext } from "../../context/MediaContext";
+import { useNavigate } from "react-router-dom";
 
 export const CreatePosts = () => {
   const { token, profile } = useContext(AuthContext);
@@ -38,12 +39,24 @@ export const CreatePosts = () => {
     const data = await response?.json();
     console.log(data, "create");
     dispatch({ type: "CREATE_POSTS", payload: data.posts });
+
+    // Clear the input fields
+    setCreatePost({
+      _id: uuid(),
+      content: "",
+      photos: null,
+    });
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="create-post">
       <div className="create-post-container">
-        <div className="avatar-image avatar-create-post">
+        <div
+          className="avatar-image avatar-create-post"
+          onClick={() => navigate(`/profile`)}
+        >
           <img src={profile.avatar} alt="User Avatar" className="avatar" />
         </div>
         <div className="post-container">
@@ -52,6 +65,7 @@ export const CreatePosts = () => {
             id="create-post-input"
             className="create-post-text-input"
             placeholder="Lights, camera, movie magic!"
+            value={createPost.content}
             onChange={handlePostChange}
           />
           <div className="create-post-option">
@@ -72,6 +86,11 @@ export const CreatePosts = () => {
               disabled={!createPost.content.trim() && !createPost.photos}
               className="create-post-btn"
               onClick={() => handlePosts(createPost)}
+              style={
+                !createPost.content.trim() && !createPost.photos
+                  ? { cursor: "not-allowed" }
+                  : { cursor: "pointer" }
+              }
             >
               Post
             </button>

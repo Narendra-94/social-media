@@ -35,12 +35,19 @@
   font-size: 1.5rem;
 }
 
-.profile-link {
-  display: flex;
-  gap: 1rem;
-  padding-right: 10px;
-}
-
 .navbar-profile {
   margin-bottom: 20px;
+}
+
+.profile-link {
+  display: flex;
+  margin-right: 20px;
+}
+
+.logout {
+  text-decoration: none;
+  color: #1dfbf2;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
 }

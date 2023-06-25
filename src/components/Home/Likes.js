@@ -10,11 +10,11 @@ export const Likes = ({ post }) => {
   const { token, profile } = useContext(AuthContext);
 
   const isLike =
-    post.likes.likedBy.filter((users) => users._id === profile._id).length !==
-    0;
+    post?.likes?.likedBy?.filter((users) => users?._id === profile?._id)
+      .length !== 0;
 
   const handlePostlike = async (post) => {
-    const response = await fetch(`/api/posts/like/${post._id}`, {
+    const response = await fetch(`/api/posts/like/${post?._id}`, {
       method: "POST",
       headers: {
         authorization: token,
@@ -22,11 +22,11 @@ export const Likes = ({ post }) => {
       body: JSON.stringify(post),
     });
     const data = await response?.json();
-    dispatch({ type: "SAVE_DATA_BY_LIKE", payload: data.posts });
+    dispatch({ type: "SAVE_DATA_BY_LIKE", payload: data?.posts });
   };
 
   const handlePostDislike = async (post) => {
-    const response = await fetch(`/api/posts/dislike/${post._id}`, {
+    const response = await fetch(`/api/posts/dislike/${post?._id}`, {
       method: "POST",
       headers: {
         authorization: token,
@@ -34,7 +34,7 @@ export const Likes = ({ post }) => {
       body: JSON.stringify(post),
     });
     const data = await response?.json();
-    dispatch({ type: "SAVE_DATA_BY_DISLIKE", payload: data.posts });
+    dispatch({ type: "SAVE_DATA_BY_DISLIKE", payload: data?.posts });
   };
 
   const likedPostByUser = (postUser) => {
@@ -53,7 +53,7 @@ export const Likes = ({ post }) => {
       ) : (
         <BiHeart onClick={() => likedPostByUser(post)} />
       )}
-      <p>{post.likes.likeCount}</p>
+      <p>{post?.likes?.likeCount || 0}</p>
     </div>
   );
 };

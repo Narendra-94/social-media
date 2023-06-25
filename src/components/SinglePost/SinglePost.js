@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MediaContext } from "../../context/MediaContext";
 import { Posts } from "../Posts";
-import { PageHeader } from "../PageHeader/PageHeader";
 import "./SinglePost.css";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 

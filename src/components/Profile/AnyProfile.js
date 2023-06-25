@@ -67,7 +67,9 @@ export const AnyProfile = () => {
           <span className="single-post-header">
             {userData.firstName} {userData.lastName}
           </span>
-          <p>{postDetails.length} posts</p>
+          <p style={{ fontSize: "1.3rem", color: "##e2e2e292" }}>
+            {postDetails.length} posts
+          </p>
         </div>
       </div>
       <div>

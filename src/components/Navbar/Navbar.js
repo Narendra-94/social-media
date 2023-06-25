@@ -22,7 +22,9 @@ export const Navbar = () => {
             <Link to="/">Home</Link>
             <Link to="/explore">Explore</Link>
             <Link to="/bookmarks">Bookmarks</Link>
-            <span onClick={handleLogout}>Logout</span>
+            <span className="logout" onClick={handleLogout}>
+              Logout
+            </span>
           </div>
         </div>
 

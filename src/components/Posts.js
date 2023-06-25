@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-
 import dayjs from "dayjs";
 import "dayjs/locale/en";
 import { BiComment } from "react-icons/bi";
@@ -16,23 +15,31 @@ export const Posts = ({ post, user }) => {
   const { state } = useContext(MediaContext);
 
   const editHandlerPost = state.posts.filter(
-    (post) => post.username === socialUser.username
+    (post) => post?.username === socialUser?.username
   );
 
   const navigate = useNavigate();
 
   const location = useLocation();
   const handleUserProfile = () => {
-    const currentUser = user.username === socialUser.username;
+    const currentUser = user?.username === socialUser?.username;
     if (currentUser) {
       navigate(`/profile`);
     } else {
-      navigate(`/profile/${user.username}`);
+      navigate(`/profile/${user?.username}`);
     }
   };
 
+  const handleShare = () => {
+    const postURL = `${window?.location?.origin}/singlePost/${post?._id}`;
+
+    navigator?.clipboard?.writeText(postURL)?.then(() => {
+      console.log("Post URL copied to clipboard:", postURL);
+    });
+  };
+
   return (
-    <div key={post._id} className="post">
+    <div key={post?._id} className="post">
       <div className="post-container">
         <div className="user-information">
           <div className="avatar-image">
@@ -53,11 +60,11 @@ export const Posts = ({ post, user }) => {
                 <div className="user-createdDate">
                   <p className="dot">.</p>
                   <p>
-                    {dayjs(post.createdAt).locale("en").format("MMM D, YYYY")}
+                    {dayjs(post?.createdAt).locale("en").format("MMM D, YYYY")}
                   </p>
                 </div>
               </div>
-              {editHandlerPost.map((content) =>
+              {editHandlerPost?.map((content) =>
                 content._id === post._id ? (
                   <Menu post={post} user={user} />
                 ) : null
@@ -65,11 +72,11 @@ export const Posts = ({ post, user }) => {
             </div>
             <div
               className="user-content"
-              onClick={() => navigate(`/singlePost/${post._id}`)}
+              onClick={() => navigate(`/singlePost/${post?._id}`)}
             >
-              <div className="content">{post.content}</div>
+              <div className="content">{post?.content}</div>
               <div className="content-photos">
-                <img src={post.photos} alt="" />
+                <img src={post?.photos} alt="" />
               </div>
             </div>
             <div className="user-appreciation">
@@ -82,7 +89,7 @@ export const Posts = ({ post, user }) => {
                 <BookmarkBtn post={post} />
               </div>
 
-              <BsShare />
+              <BsShare onClick={handleShare} />
             </div>
           </div>
         </div>
