@@ -18,13 +18,18 @@ export const Bookmarks = () => {
   return (
     <div className="bookmark">
       <PageHeader headerText="Bookmarks" />
-      {newBookmark?.map((post) => {
-        const user = state?.users?.find(
-          (user) => user.username === post.username
-        );
-
-        return <Posts post={post} user={user} />;
-      })}
+      {loggedInUser?.bookmarks.length === 0 ? (
+        <p style={{ fontSize: "2rem", textAlign: "center", color: "white" }}>
+          No Bookmarks
+        </p>
+      ) : (
+        newBookmark?.map((post) => {
+          const user = state?.users?.find(
+            (user) => user.username === post.username
+          );
+          return <Posts post={post} user={user} />;
+        })
+      )}
     </div>
   );
 };

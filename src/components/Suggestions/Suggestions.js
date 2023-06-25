@@ -27,31 +27,33 @@ export const Suggestions = () => {
   return (
     <aside className="suggestions">
       <Search />
-      <div className="suggestions-card">
-        <h3>Suggested Users</h3>
-        {filterSuggestions.map((user) => (
-          <div className="suggestions-container">
-            <div
-              className="avatar-image"
-              onClick={() => navigate(`/profile/${user.username}`)}
-            >
-              <img src={user.avatar} alt="" className="avatar" />
-            </div>
-            <div
-              className="suggestions-data"
-              onClick={() => navigate(`/profile/${user.username}`)}
-            >
-              <div className="user-container">
-                <p className="name">
-                  {user.firstName} {user.lastName}
-                </p>
-                <p className="username">@{user.username}</p>
+      {filterSuggestions.length !== 0 && (
+        <div className="suggestions-card">
+          <h3>Suggested Users</h3>
+          {filterSuggestions.map((user) => (
+            <div className="suggestions-container">
+              <div
+                className="avatar-image"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
+                <img src={user.avatar} alt="" className="avatar" />
               </div>
+              <div
+                className="suggestions-data"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
+                <div className="user-container">
+                  <p className="name">
+                    {user.firstName} {user.lastName}
+                  </p>
+                  <p className="username">@{user.username}</p>
+                </div>
+              </div>
+              <FollowBtn userData={user} />
             </div>
-            <FollowBtn userData={user} />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </aside>
   );
 };

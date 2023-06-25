@@ -8,7 +8,8 @@ import { BookmarkBtn } from "./Home/BookmarkBtn";
 import { Menu } from "./Menu/Menu";
 import { MediaContext } from "../context/MediaContext";
 import { useNavigate } from "react-router-dom";
-// import { Loader } from "./Loader/Loader";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Posts = ({ post, user }) => {
   // const [isLoader, setIsLoader] = useState(true);
@@ -37,6 +38,17 @@ export const Posts = ({ post, user }) => {
   };
 
   const handleShare = () => {
+    toast.success(`Link Copied`, {
+      autoClose: 1000,
+      position: "bottom-right",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      toastClassName: "custom-toast",
+    });
     const postURL = `${window?.location?.origin}/singlePost/${post?._id}`;
 
     navigator?.clipboard?.writeText(postURL)?.then(() => {
