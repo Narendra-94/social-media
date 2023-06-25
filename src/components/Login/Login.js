@@ -17,7 +17,7 @@ export const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const { setToken, setProfile, profile } = useContext(AuthContext);
+  const { setToken, setProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLoginGuest = async () => {
@@ -38,7 +38,6 @@ export const Login = () => {
       setProfile(data.foundUser);
       navigate("/");
 
-      // Move the toast message here, after the redirect and state updates
       toast(
         `🎭 Welcome ${data.foundUser.firstName} ${data.foundUser.lastName}`,
         {

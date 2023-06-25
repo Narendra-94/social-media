@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AvatarGenerator } from "random-avatar-generator";
 
 export const SignUp = () => {
-  const { setToken, profile, setProfile, signUpData, setSignUpData } =
+  const { setToken, setProfile, signUpData, setSignUpData } =
     useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
