@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AvatarGenerator } from "random-avatar-generator";
 
 export const SignUp = () => {
-  const { setToken, setProfile, signUpData, setSignUpData } =
+  const { setToken, profile, setProfile, signUpData, setSignUpData } =
     useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -71,7 +71,7 @@ export const SignUp = () => {
         navigate("/");
         setProfile(data.createdUser);
 
-        toast(`🎭 Welcome ${signUpData.firstName} ${signUpData.lastName}`, {
+        toast(`🎭 Welcome to Chalchitra`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
