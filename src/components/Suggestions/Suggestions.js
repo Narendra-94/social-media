@@ -4,16 +4,16 @@ import { Search } from "./Search/Search";
 import { MediaContext } from "../../context/MediaContext";
 import { useNavigate } from "react-router-dom";
 import { FollowBtn } from "../Profile/FollowBtn";
-import "../Suggestions/suggestions.css";
+import "./Suggestions.css";
 
 export const Suggestions = () => {
   const { state } = useContext(MediaContext);
 
   const socialUser = JSON.parse(localStorage.getItem("user"));
 
-  const userData = state.users?.find(
-    (dbUser) => dbUser.username === socialUser.username
-  );
+  // const userData = state.users?.find(
+  //   (dbUser) => dbUser.username === socialUser.username
+  // );
 
   const followingData = socialUser.following.map((el) => el.username);
   const filterSuggestions = state.users?.filter(
