@@ -1,4 +1,7 @@
-# Chalchitra - Social Media for Movie Buffs
+# Chalchitra - Social Media App for Movie Buffs
+
+<h3>Chalchitra is a social media app designed for movie buffs. It provides a comprehensive movie database, personalized recommendations, and a vibrant community for discussions and connections. It's the go-to app for all your movie-related needs.</h1>
+
 ## Libraries Used
 
 Chalchitra utilizes the following libraries to enhance its functionality and provide a seamless user experience:
