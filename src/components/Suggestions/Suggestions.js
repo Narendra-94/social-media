@@ -4,7 +4,7 @@ import { Search } from "./Search/Search";
 import { MediaContext } from "../../context/MediaContext";
 import { useNavigate } from "react-router-dom";
 import { FollowBtn } from "../Profile/FollowBtn";
-import "./suggestions.css";
+import "../Suggestions/suggestions.css";
 
 export const Suggestions = () => {
   const { state } = useContext(MediaContext);
