@@ -61,6 +61,15 @@
   line-height: 2.2rem;
 }
 
+.bio {
+  font-weight: bolder;
+}
+
+.work {
+  color: var(--movie-theme-main-color);
+  display: flex;
+}
+
 .profile-bio p {
   color: var(--movie-theme-main-color);
 }

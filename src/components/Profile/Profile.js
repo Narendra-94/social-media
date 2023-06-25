@@ -13,6 +13,7 @@ import { Follower } from "./Follower";
 import { Following } from "./Following";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BsGlobe2 } from "react-icons/bs";
 
 export const Profile = () => {
   const { state } = useContext(MediaContext);
@@ -102,8 +103,17 @@ export const Profile = () => {
                 </div>
 
                 <div className="profile-bio">
-                  <p className="bio">{userData.bio}</p>
+                  <p className="bio" style={{ marginBottom: "10px" }}>
+                    {userData.bio}
+                  </p>
                   <a className="work" href={userData.website}>
+                    <BsGlobe2
+                      style={{
+                        fontSize: "2rem",
+                        marginRight: "5px",
+                        color: "#1dfbf2",
+                      }}
+                    />
                     {userData.website}
                   </a>
                 </div>
