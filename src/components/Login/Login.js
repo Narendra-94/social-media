@@ -34,22 +34,26 @@ export const Login = () => {
     if (data.encodedToken) {
       localStorage.setItem("token", data.encodedToken);
       localStorage.setItem("user", JSON.stringify(data.foundUser));
-      navigate("/");
       setToken(data.encodedToken);
       setProfile(data.foundUser);
-    }
-    toast(`🎭 Welcome ${profile.firstName} ${profile.lastName}`, {
-      position: "bottom-left",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
+      navigate("/");
 
+      // Move the toast message here, after the redirect and state updates
+      toast(
+        `🎭 Welcome ${data.foundUser.firstName} ${data.foundUser.lastName}`,
+        {
+          position: "bottom-left",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLoginGuest();

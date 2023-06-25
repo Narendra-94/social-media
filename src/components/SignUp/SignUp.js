@@ -71,7 +71,7 @@ export const SignUp = () => {
         navigate("/");
         setProfile(data.createdUser);
 
-        toast(`🎭 Welcome to Chalchitra`, {
+        toast(`🎭 Welcome ${signUpData.firstName} ${signUpData.lastName}`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
