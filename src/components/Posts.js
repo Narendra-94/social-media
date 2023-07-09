@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
-import { BiComment } from "react-icons/bi";
+
 import { BsShare } from "react-icons/bs";
 import { Likes } from "./Home/Likes";
 import { BookmarkBtn } from "./Home/BookmarkBtn";
