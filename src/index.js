@@ -7,6 +7,7 @@ import { makeServer } from "./server";
 import { AuthProvider } from "./context/AuthContext";
 import { MediaProvider } from "./context/MediaContext";
 import { DataProvider } from "./context/DataContext";
+import { ErrorProvider } from "./context/ErrorContext";
 
 makeServer();
 
@@ -17,7 +18,9 @@ root.render(
       <AuthProvider>
         <MediaProvider>
           <DataProvider>
-            <App />
+            <ErrorProvider>
+              <App />
+            </ErrorProvider>
           </DataProvider>
         </MediaProvider>
       </AuthProvider>

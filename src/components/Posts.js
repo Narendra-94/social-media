@@ -102,7 +102,7 @@ export const Posts = ({ post, user }) => {
                 <Likes post={post} />
               </div>
 
-              <BiComment />
+              {/* <BiComment /> */}
               <div>
                 <BookmarkBtn post={post} />
               </div>

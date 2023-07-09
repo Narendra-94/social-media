@@ -2,18 +2,22 @@ import React, { useContext, useState } from "react";
 import { Logo } from "../Logo";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../SignUp/signup.css";
 import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ErrorContext } from "../../context/ErrorContext";
 
 export const Login = () => {
   const [loginData, setLoginData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
+
+  const { errors, setErrors } = useContext(ErrorContext);
+  const location = useLocation();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -53,6 +57,63 @@ export const Login = () => {
       );
     }
   };
+
+  const handleLogin = async () => {
+    const validationErrors = {};
+
+    if (!loginData.username) {
+      validationErrors.email = "Email is required";
+    }
+
+    if (!loginData.password) {
+      validationErrors.password = "Password is required";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username: loginData.username,
+        password: loginData.password,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (data.encodedToken) {
+      localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(data.foundUser));
+      navigate(location?.state?.from?.pathname || "/");
+      setToken(data.encodedToken);
+      setProfile(data.foundUser);
+      toast.success("Successfully logged in ", {
+        autoClose: 1000,
+        position: "bottom-right",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      toast.error("Wrong Credentials", {
+        autoClose: 1000,
+        position: "top-right",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLoginGuest();
@@ -72,12 +133,15 @@ export const Login = () => {
             <input
               type="text"
               placeholder="gabbarsingh"
-              value={loginData.email}
+              value={loginData.username}
               onChange={(e) =>
-                setLoginData({ ...loginData, email: e.target.value })
+                setLoginData({ ...loginData, username: e.target.value })
               }
             />
           </div>
+          {errors.username && (
+            <span className="error-email">{errors.username}</span>
+          )}
 
           <div className="signup-input-password">
             <label htmlFor="">Password</label>
@@ -104,8 +168,13 @@ export const Login = () => {
               )}
             </div>
           </div>
+          {errors.password && (
+            <span className="error-password">{errors.password}</span>
+          )}
           <div className="login-button-container">
-            <button className="login-btn">Login</button>
+            <button className="login-btn" onClick={handleLogin}>
+              Login
+            </button>
             <button className="guest-btn" type="submit">
               Guest Mode
             </button>
