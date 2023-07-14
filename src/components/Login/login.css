@@ -21,3 +21,8 @@
   color: var(--movie-theme-main-color);
   cursor: pointer;
 }
+
+.error-password,
+.error-username {
+  color: red;
+}

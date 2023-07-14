@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AvatarGenerator } from "random-avatar-generator";
+import { ErrorContext } from "../../context/ErrorContext";
 
 export const SignUp = () => {
   const { setToken, setProfile, signUpData, setSignUpData } =
@@ -15,6 +16,8 @@ export const SignUp = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { errors, setErrors } = useContext(ErrorContext);
 
   const navigate = useNavigate();
 
@@ -38,7 +41,7 @@ export const SignUp = () => {
     }
 
     if (!signUpData.username) {
-      validationErrors.email = "Email is required";
+      validationErrors.username = "Username is required";
     }
 
     if (!signUpData.password) {
@@ -49,6 +52,11 @@ export const SignUp = () => {
       validationErrors.confirmPassword = "Confirm password is required";
     } else if (signUpData.password !== signUpData.confirmPassword) {
       validationErrors.confirmPassword = "Passwords don't match";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
     }
 
     if (signUpData.password === signUpData.confirmPassword) {
@@ -110,6 +118,9 @@ export const SignUp = () => {
               required
             />
           </div>
+          {errors.firstName && (
+            <span className="error">{errors.firstName}</span>
+          )}
           <div className="signup-input-name">
             <label htmlFor="">Lastname</label>
             <input
@@ -119,6 +130,8 @@ export const SignUp = () => {
               required
             />
           </div>
+          {errors.lastName && <span className="error">{errors.lastName}</span>}
+
           <div className="signup-input-username">
             <label htmlFor="">UserName</label>
             <input
@@ -128,6 +141,7 @@ export const SignUp = () => {
               required
             />
           </div>
+          {errors.username && <span className="error">{errors.username}</span>}
           <div className="signup-input-password">
             <label htmlFor="">Password</label>
             <div className="password-container">
@@ -151,6 +165,8 @@ export const SignUp = () => {
               )}
             </div>
           </div>
+          {errors.password && <span className="error">{errors.password}</span>}
+
           <div className="signup-input-confirm-password">
             <label htmlFor="">Confirm Password</label>
             <div className="password-container">
@@ -174,7 +190,9 @@ export const SignUp = () => {
               )}
             </div>
           </div>
-
+          {errors.confirmPassword && (
+            <span className="error">{errors.confirmPassword}</span>
+          )}
           <button className="signup-btn" onClick={handleSignUp}>
             Create New Account
           </button>

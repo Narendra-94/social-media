@@ -62,7 +62,7 @@ export const Login = () => {
     const validationErrors = {};
 
     if (!loginData.username) {
-      validationErrors.email = "Email is required";
+      validationErrors.username = "Username is required";
     }
 
     if (!loginData.password) {
@@ -83,7 +83,7 @@ export const Login = () => {
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log(data, "login");
 
     if (data.encodedToken) {
       localStorage.setItem("token", data.encodedToken);
@@ -116,9 +116,8 @@ export const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLoginGuest();
+    handleLogin();
   };
-
   return (
     <div className="signup">
       <div className="signup-container">
@@ -140,7 +139,7 @@ export const Login = () => {
             />
           </div>
           {errors.username && (
-            <span className="error-email">{errors.username}</span>
+            <span className="error-username">{errors.username}</span>
           )}
 
           <div className="signup-input-password">
@@ -172,10 +171,14 @@ export const Login = () => {
             <span className="error-password">{errors.password}</span>
           )}
           <div className="login-button-container">
-            <button className="login-btn" onClick={handleLogin}>
+            <button className="login-btn" type="submit">
               Login
             </button>
-            <button className="guest-btn" type="submit">
+            <button
+              className="guest-btn"
+              type="button"
+              onClick={handleLoginGuest}
+            >
               Guest Mode
             </button>
           </div>
